@@ -20,8 +20,8 @@ class Sector{
   public float getFert() {return fert;}
   
   //increases sector values with events (tractor, rain, ...) (negative when decreasing)
-  public void incWater(float quantity) {water += quantity;}
-  public void incHummus(float quantity) {hummus += quantity;}
-  public void incLime(float quantity) {lime += quantity;}
-  public void incFert(float quantity) {fert += quantity;} 
+  public void incWater(int quantity) {water += quantity;}
+  public void incHummus(int quantity) {hummus += quantity;}
+  public void incLime(int quantity) {lime += quantity;}
+  public void incFert(int quantity) {fert += quantity;} 
 }

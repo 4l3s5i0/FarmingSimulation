@@ -1,6 +1,7 @@
 
-import java.util.Arrays;
 
+import java.util.Arrays;
+import java.lang.Math;
 
 class Field {
   
@@ -42,10 +43,10 @@ class Field {
   
   
 
-  float waterNoise(int x, int y, float avg,int offset){
+  private float waterNoise(int x, int y, float avg,int offset){
     float water;
   
-    water = avg+((5*sin(x+(sin(offset)*3)))+((5*cos(y+(sin(offset)*3)))));
+    water = avg+((5*sin((x+(sin(offset)*3))*0.2))+((5*cos((y+(sin(offset)))*0.1))));
   
   if(water>200){water=200;}
   if(water<0){water=0;}
@@ -53,10 +54,10 @@ class Field {
   return water;
   }
   
-  float limeNoise(int x, int y, float avg,int offset){
+  private float limeNoise(int x, int y, float avg,int offset){
     float water;
   
-    water = avg+((5*sin(x+(sin(offset*0.5)*3)))+((5*cos(y+(sin(offset*0.5)*3)))));
+    water = avg+((5*sin((x+(sin(offset*0.5)*3))*0.2))+((5*cos((y+(sin(offset*0.5)))*0.1))));
   
   if(water>200){water=200;}
   if(water<0){water=0;}
@@ -65,10 +66,10 @@ class Field {
   }
 
    
-  float fertNoise(int x, int y, float avg,int offset){
+  private float fertNoise(int x, int y, float avg,int offset){
     float water;
   
-    water = avg+((5*sin(x+(sin(offset*2)*3)))+((5*cos(y+(sin(offset*2)*3)))));
+    water = avg+((5*sin((x+(sin(offset*2)*3))*0.2))+((5*cos((y+(sin(offset*2)))*0.1))));
   
   if(water>200){water=200;}
   if(water<0){water=0;}
@@ -76,10 +77,10 @@ class Field {
   return water;
   }
   
-   float humusNoise(int x, int y, float avg,int offset){
+   private float humusNoise(int x, int y, float avg,int offset){
     float water;
   
-    water = avg+((5*sin(x+(sin(offset*0.3)*3)))+((5*cos(y+(sin(offset*0.3)*3)))));
+    water = avg+((5*sin((x+(sin(offset*0.3)*3))*0.2))+((5*cos((y+(sin(offset*0.3)))*0.1))));
   
   if(water>200){water=200;}
   if(water<0){water=0;}
@@ -128,48 +129,64 @@ class Field {
   
   
   //GETTERS FOR FIELD SECTORS (for specific sector)
-  public float Water(int x, int y)
+  public float Water(float x, float y)
   {
-    return Field[x][y].getWater();
+    int intx = (int) Math.round(x);
+    int inty = (int) Math.round(y);
+    return Field[intx/10][inty/10].getWater();
   }
   
-  public float Hummus(int x, int y)
+  public float Hummus(float x, float y)
   {
-    return Field[x][y].getHummus();
+    int intx = (int) Math.round(x);
+    int inty = (int) Math.round(y);
+    return Field[intx/10][inty/10].getHummus();
   }
   
-  public float Lime(int x, int y)
+  public float Lime(float x, float y)
   {
-    return Field[x][y].getLime();
+    int intx = (int) Math.round(x);
+    int inty = (int) Math.round(y);
+    return Field[intx/10][inty/10].getLime();
   }
   
-  public float Fert(int x, int y)
+  public float Fert(float x, float y)
   {
-    return Field[x][y].getFert();
+    int intx = (int) Math.round(x);
+    int inty = (int) Math.round(y);
+    return Field[intx/10][inty/10].getFert();
   }
   
   
   
   
   //SETTERS FOR FIELD SECTORS (updated with machines)
-  public void updateWater(int x, int y, float quantity)
+  public void updateWater(float x, float y, int quantity)
   {
-    Field[x][y].incWater(quantity);
+    int intx = (int) Math.round(x);
+    int inty = (int) Math.round(y);
+    Field[intx/10][inty/10].incWater(quantity);
   }
   
-  public void updateHummus(int x, int y, float quantity)
+  public void updateHummus(float x, float y, int quantity)
   {
-    Field[x][y].incHummus(quantity);
+    int intx = (int) Math.round(x);
+    int inty = (int) Math.round(y);
+    Field[intx/10][inty/10].incHummus(quantity);
   }
   
-  public void updateLime(int x, int y, float quantity)
+  public void updateLime(float x, float y, int quantity)
   {
-    Field[x][y].incLime(quantity);
+    int intx = (int) Math.round(x);
+    int inty = (int) Math.round(y);
+    Field[intx/10][inty/10].incLime(quantity);
   }
   
-  public void updateFert(int x, int y, float quantity)
+  public void updateFert(float x, float y, int quantity)
   {
-    Field[x][y].incFert(quantity);
+    int intx = (int) Math.round(x);
+    int inty = (int) Math.round(y);
+    Field[intx/10][inty/10].incFert(quantity);
   }
 
 
